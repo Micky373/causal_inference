@@ -25,3 +25,15 @@ def find_high_corr(df):
     high_corr_columns = high_corr.index[abs(high_corr['diagnosis'])>=0.5]
     
     return high_corr_columns
+
+def fix_outlier(df):
+    column_name=list(df.columns[2:])
+    for i in column_name:
+        upper_quartile=df[i].quantile(0.75)
+        lower_quartile=df[i].quantile(0.25)
+        df[i]=np.where(df[i]>upper_quartile,df[i].median(),np.where(df[i]<lower_quartile,df[i].median(),df[i]))
+    return df
+
+def scaler(df):
+    df_new = (df-df.min())/(df.max()-df.min())
+    return df_new
