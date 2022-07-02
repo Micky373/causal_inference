@@ -1,0 +1,15 @@
+artifact_uri: file:///home/micky/Desktop/10Acad/causal_inference/notebooks/mlruns/0/cd772de06b514de9924c5f29bd5d319a/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: cd772de06b514de9924c5f29bd5d319a
+run_uuid: cd772de06b514de9924c5f29bd5d319a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1656794630985
+status: 1
+tags: []
+user_id: micky
