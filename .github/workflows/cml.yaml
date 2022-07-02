@@ -22,4 +22,6 @@ jobs:
           cml publish charts/count_plot.jpg --md >> report.md
           echo "## Feature importance" >> report.md
           cml publish charts/top_10_features.jpg --md >> report.md
+          echo "## Causal inference" >> report.md
+          cml publish charts/output_causal.jpg --md >> report.md
           cml send-comment report.md
