@@ -5,6 +5,9 @@ from causalnex.structure.notears import from_pandas
 from causalnex.plots import plot_structure, NODE_STYLE, EDGE_STYLE
 from IPython.display import Image
 
+# A function for count plotting
+# Recieves dataframe and columns then plots the graph
+
 def count_plot(df:pd.DataFrame, column:str) -> None:
     plt.figure(figsize=(10, 8))
     sns.countplot(data=df, x=column)
@@ -14,11 +17,17 @@ def count_plot(df:pd.DataFrame, column:str) -> None:
     plt.savefig('../charts/count_plot.jpg')
     plt.show()
 
+# A function for plotting distribution graph
+# Recieves data frame and columns then plots the distribution graph
+
 def plot_ditribution(df,columns):
     for col in columns:
         sns.displot(df, x=col, hue="diagnosis",kind='kde',multiple='stack',palette=["red", "green"])
         plt.savefig('../charts/'+col+'_distribution.jpg')
         plt.show()
+
+# A function for bivariate analysis between the feature and target
+# Recieves data frame, fieds, features then creates a plot
 
 def feature_vs_target(df,features, fields):
     fig, axs = plt.subplots(10,3, figsize=(20,45))
@@ -32,6 +41,9 @@ def feature_vs_target(df,features, fields):
                         ax=axs[col][f])
 
 
+# A function for plotting outliers in a dataframe
+# Recieves dataframe, columns title and plots the outlier graph of the given column
+
 def plot_outlier(df,columns,title):
     sns.set(style="darkgrid")
     data_frame = pd.melt(df, id_vars='diagnosis', value_vars=columns)
@@ -42,6 +54,9 @@ def plot_outlier(df,columns,title):
     res.set_yticklabels(res.get_ymajorticklabels(), fontsize = 15)
     plt.show()
 
+
+# A functino that creates a bar plot
+# Recieves a dataframe, title and save_as then it will plot the bar chart 
 
 def plot_bar(df,title,save_as):
     plt.figure(figsize=(10, 8))
