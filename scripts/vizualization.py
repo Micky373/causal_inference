@@ -68,12 +68,13 @@ def plot_bar(df,title,save_as):
     plt.show()
 
 
-def plot_causal(sm,title):
+# A function for plotting the causal graphs
+# Recieve a structure model and plots a causal graph from it
+
+def plot_causal(sm):
     viz = plot_structure(
     sm,
     graph_attributes={"scale": "2"},
     all_node_attributes=NODE_STYLE.WEAK,
     all_edge_attributes=EDGE_STYLE.WEAK)
-    image = Image(Image(viz.draw(format='png')))
-    image.save(f'../charts/{title}.jpg')
     return Image(viz.draw(format='png'))
