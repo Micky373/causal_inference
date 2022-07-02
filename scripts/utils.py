@@ -43,4 +43,4 @@ def jaccard_similarity(g, h):
     b = h.edges
     i = set(a).intersection(b)
     result = round(len(i) / (len(a) + len(b) - len(i)),3) 
-    print(f'The jaccard simillarity is {result}')
+    print(f'The jaccard simillarity between {g} and {h} is {result}')
