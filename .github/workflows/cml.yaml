@@ -1,0 +1,25 @@
+name: data visualizations
+on: [push]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: iterative/setup-cml@v1
+      - name: create visualization reports
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # basic description of the plots
+          echo '# Basic data visualizations' >> report.md
+          # Post reports as comments in GitHub PRs
+          echo '## Area mean distribution' >> report.md
+          cml publish charts/area_mean_distribution.jpg --md >> report.md
+          echo "## Correlation heatmap" >> report.md
+          cml publish charts/higher_correlation.jpg --md >> report.md
+          echo "## Count Plot" >> report.md
+          cml publish charts/count_plot.jpg --md >> report.md
+          echo "## Feature importance" >> report.md
+          cml publish charts/top_10_features.jpg --md >> report.md
+          cml send-comment report.md
