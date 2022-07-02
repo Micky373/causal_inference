@@ -1,6 +1,9 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+from causalnex.structure.notears import from_pandas
+from causalnex.plots import plot_structure, NODE_STYLE, EDGE_STYLE
+from IPython.display import Image
 
 def count_plot(df:pd.DataFrame, column:str) -> None:
     plt.figure(figsize=(10, 8))
@@ -48,3 +51,12 @@ def plot_bar(df,title,save_as):
     ax.set_title(title, fontsize=30)
     plt.savefig('../charts/'+save_as)
     plt.show()
+
+
+def plot_causal(sm):
+    viz = plot_structure(
+    sm,
+    graph_attributes={"scale": "2"},
+    all_node_attributes=NODE_STYLE.WEAK,
+    all_edge_attributes=EDGE_STYLE.WEAK)
+    return Image(viz.draw(format='png'))

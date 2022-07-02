@@ -37,3 +37,10 @@ def fix_outlier(df):
 def scaler(df):
     df_new = (df-df.min())/(df.max()-df.min())
     return df_new
+
+def jaccard_similarity(g, h):
+    a = g.edges
+    b = h.edges
+    i = set(a).intersection(b)
+    result = round(len(i) / (len(a) + len(b) - len(i)),3) 
+    print(f'The jaccard simillarity is {result}')
