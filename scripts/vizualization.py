@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
 
 def count_plot(df:pd.DataFrame, column:str) -> None:
     plt.figure(figsize=(10, 8))
